@@ -1,11 +1,10 @@
-package util;
+package dev.mtage.util;
 
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.base.Verify;
 
 /**
- * 大部分情况就是对Guava API的简单封装
  * @author mtage
  * @since 2019/9/3 21:44
  **/

@@ -1,13 +1,13 @@
-package cache;
+package dev.mtage.cache;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
+import dev.mtage.util.AssertUtil;
 import org.redisson.api.RedissonClient;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import util.AssertUtil;
 
 import java.io.Serializable;
 import java.util.concurrent.Callable;
@@ -53,7 +53,6 @@ public class CacheClient {
         AssertUtil.checkNotBlank(key, "缓存key empty");
         AssertUtil.checkNotNull(value, "缓存value null");
         AssertUtil.verify(timeToLive >= ONE, "过期时间必须>=1秒");
-
         try {
             redissonClient.getBucket(buildActualKey(nameSpace, key)).set(value, timeToLive, TimeUnit.SECONDS);
         } catch (Exception ex) {
@@ -101,12 +100,7 @@ public class CacheClient {
 
     /**
      * 从缓存获取数据 如果获取失败 从底层数据源回源,放入缓存
-     * <ul>
-     * <li>优先本地缓存</li>
-     * <li>其次redis</li>
-     * <li>其次回源</li>
-     * <li>放入本地缓存 redis</li>
-     * </ul>
+     * 放入本地缓存 redis
      *
      * @param key
      * @param callable
