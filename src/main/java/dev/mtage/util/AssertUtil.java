@@ -3,6 +3,7 @@ package dev.mtage.util;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Strings;
 import com.google.common.base.Verify;
+import org.apache.commons.lang3.StringUtils;
 
 /**
  * @author mtage
@@ -14,7 +15,7 @@ public class AssertUtil {
     }
 
     public static String checkNotBlank(String str, String errorMessage) {
-        if (Strings.isNullOrEmpty(str)) {
+        if (StringUtils.isBlank(str)) {
             throw new IllegalArgumentException(errorMessage);
         }
         return str;
