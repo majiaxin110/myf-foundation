@@ -4,6 +4,26 @@
 - [ ] 缓存相关
 - [ ] 日志相关
 - [ ] BigDecimal相关
-- [ ] 断言工具类
+- [x] 断言工具类
+
+# How to use
+Add Github Repository and Dependency
+```xml
+<repositories>
+    <repository>
+        <id>github</id>
+        <name>GitHub majiaxin110 Apache Maven Packages</name>
+        <url>https://maven.pkg.github.com/majiaxin110/myf-foundation</url>
+    </repository>
+</repositories>
+
+<dependencies>
+    <dependency>
+        <groupId>dev.mtage</groupId>
+        <artifactId>myf-foundation</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+</dependencies>
+```
 
 poi~

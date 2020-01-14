@@ -50,12 +50,9 @@
 
     <distributionManagement>
         <repository>
-            <id>rdc-releases</id>
-            <url>https://repo.rdc.aliyun.com/repository/106710-release-EEJpo6/</url>
+            <id>github</id>
+            <name>GitHub majiaxin110 Apache Maven Packages</name>
+            <url>https://maven.pkg.github.com/majiaxin110/myf-foundation</url>
         </repository>
-        <snapshotRepository>
-            <id>rdc-snapshots</id>
-            <url>https://repo.rdc.aliyun.com/repository/106710-snapshot-HD1JbY/</url>
-        </snapshotRepository>
     </distributionManagement>
 </project>
