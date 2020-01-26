@@ -7,6 +7,7 @@
 - [x] 断言工具类
 
 # How to use
+See [official reference](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-apache-maven-for-use-with-github-packages#authenticating-to-github-packages) to authenticate to GitHub Packages
 Add Github Repository and Dependency
 ```xml
 <repositories>
@@ -21,7 +22,7 @@ Add Github Repository and Dependency
     <dependency>
         <groupId>dev.mtage</groupId>
         <artifactId>myf-foundation</artifactId>
-        <version>0.0.1-SNAPSHOT</version>
+        <version>0.0.3</version>
     </dependency>
 </dependencies>
 ```
