@@ -1,5 +1,6 @@
 # Myf Foundation
 个人自用的通用类库，包括缓存、日志、对象存储等
+
 工程进度
 - [ ] 缓存相关
 - [ ] 日志相关
@@ -8,6 +9,7 @@
 
 # How to use
 See [official reference](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-apache-maven-for-use-with-github-packages#authenticating-to-github-packages) to authenticate to GitHub Packages
+
 Add Github Repository and Dependency
 ```xml
 <repositories>
