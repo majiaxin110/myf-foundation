@@ -91,7 +91,7 @@ public class CacheClient {
         AssertUtil.checkNotBlank(key, "缓存key empty");
 
         try {
-            return (T) redissonClient.getBucket(buildActualKey(nameSpace, key)).get();
+            return redissonClient.<T>getBucket(buildActualKey(nameSpace, key)).get();
         } catch (Exception ex) {
             errorLogger.error("从缓存获取数据异常 key {}", key);
         }
