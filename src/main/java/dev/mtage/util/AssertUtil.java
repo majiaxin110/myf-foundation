@@ -30,6 +30,16 @@ public class AssertUtil {
         }
     }
 
+    /***
+     * Ensures that an object reference passed as a parameter to the calling method is NOT null based on Guava.
+     * @param obj an object reference
+     * @param errorMessage the exception message to use if the check fails
+     * @throws CommonSysException if {@code obj} is null, with and message
+     */
+    public static <T> void checkNotNull(T obj, String errorMessage) {
+        checkNotNull(obj, null, errorMessage);
+    }
+
     /**
      * Ensures that an object reference passed as a parameter to the calling method is null based on Guava.
      * @param obj an object reference
@@ -46,6 +56,17 @@ public class AssertUtil {
     }
 
     /**
+     * Ensures that an object reference passed as a parameter to the calling method is null based on Guava.
+     * @param obj an object reference
+     * @param errorMessage the exception message to use if the check fails
+     * @throws CommonSysException if {@code obj} is not null, with message
+     */
+    public static <T> void checkNull(T obj, String errorMessage) {
+        checkNull(obj, null, errorMessage);
+    }
+
+
+    /**
      * Ensures that a string is not blank based Apache Commons.
      * @param str
      * @param errorCode
@@ -59,18 +80,38 @@ public class AssertUtil {
     }
 
     /**
+     * Ensures that a string is not blank based Apache Commons.
+     * @param str
+     * @param errorMessage
+     * @throws CommonSysException if {@code obj} is blank, with message
+     */
+    public static void checkNotBlank(String str, String errorMessage) {
+
+    }
+
+    /**
      * Ensures that {@code expression} is {@code true}
      * @param expression
      * @param errorCode
      * @param errorMessage
      * @throws CommonSysException if {@code expression} is not {@code true}, with code and message
      */
-    public static void verify(boolean expression,  String errorCode, String errorMessage) {
+    public static void verify(boolean expression, String errorCode, String errorMessage) {
         try {
             Verify.verify(expression, errorMessage);
         } catch (VerifyException e) {
             throw new CommonSysException(errorCode, errorMessage, e);
         }
+    }
+
+    /**
+     * Ensures that {@code expression} is {@code true}
+     * @param expression
+     * @param errorMessage
+     * @throws CommonSysException if {@code expression} is not {@code true}, with message
+     */
+    public static void verify(boolean expression, String errorMessage) {
+        verify(expression, null, errorMessage);
     }
 
 }
