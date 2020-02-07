@@ -1,11 +1,14 @@
 package dev.mtage.error;
 
+import lombok.Getter;
+
 /**
  * @author mtage
  * @date 2019/10/4 14:50
  **/
 public class CommonSysException extends RuntimeException{
     private static final long serialVersionUID = -1525668676119894006L;
+    @Getter
     private String errorCode;
     private String message;
 
