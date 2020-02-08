@@ -14,7 +14,7 @@ import java.util.Date;
  * @since 2020/2/7 20:40
  */
 @Data
-public class SimpleResult<T extends Serializable> implements Serializable {
+public class SimpleResult<T> implements Serializable {
     private static final long serialVersionUID = -592650298251475150L;
 
     /**
@@ -30,14 +30,14 @@ public class SimpleResult<T extends Serializable> implements Serializable {
 
     private T result;
 
-    public static <T extends Serializable> SimpleResult<T> success(T result) {
+    public static <T> SimpleResult<T> success(T result) {
         SimpleResult<T> simpleResult = new SimpleResult<>();
         simpleResult.setSuccess(true);
         simpleResult.setResult(result);
         return simpleResult;
     }
 
-    public static <T extends Serializable> SimpleResult<T> fail(String errorCode, String errorMsg) {
+    public static <T> SimpleResult<T> fail(String errorCode, String errorMsg) {
         SimpleResult<T> simpleResult = new SimpleResult<>();
         simpleResult.setSuccess(false);
         simpleResult.setErrorCode(errorCode);
