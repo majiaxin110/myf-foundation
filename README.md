@@ -8,6 +8,12 @@
 - [x] 断言工具类
 
 # How to use
+Deploy
+```
+mvn deploy:deploy-file -DgeneratePom=false -DrepositoryId=github -Durl=https://maven.pkg.github.com/majiaxin110/myf-foundation -DpomFile=pom.xml -Dfile=target/myf-foundation-0.0.5.jar
+```
+
+
 See [official reference](https://help.github.com/en/github/managing-packages-with-github-packages/configuring-apache-maven-for-use-with-github-packages#authenticating-to-github-packages) to authenticate to GitHub Packages
 
 Add Github Repository and Dependency
