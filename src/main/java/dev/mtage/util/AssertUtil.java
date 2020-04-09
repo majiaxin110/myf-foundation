@@ -10,7 +10,7 @@ import java.util.Objects;
 
 /**
  * 断言工具类
- * 之所以不直接使用guava 的 preconditions，是因为其抛出的Exception各种各样，又无法添加errorCode
+ * 之所以不直接使用 guava 的 preconditions，是因为其抛出的Exception各种各样，又无法添加errorCode
  * @author mtage
  * @since 2019/9/3 21:44
  **/
@@ -86,7 +86,30 @@ public class AssertUtil {
      * @throws CommonSysException if {@code obj} is blank, with message
      */
     public static void checkNotBlank(String str, String errorMessage) {
+        checkNotBlank(str, null, errorMessage);
+    }
 
+    /**
+     * Ensures that two object reference passed are equals
+     * @param objA
+     * @param objB
+     * @param errorCode
+     * @param errorMessage
+     */
+    public static void checkEquals(Object objA, Object objB, String errorCode, String errorMessage) {
+        if (!Objects.equals(objA, objB)) {
+            throw new CommonSysException(errorCode, errorMessage);
+        }
+    }
+
+    /**
+     * Ensures that two object reference passed are equals
+     * @param objA
+     * @param objB
+     * @param errorMessage
+     */
+    public static void checkEquals(Object objA, Object objB, String errorMessage) {
+        checkEquals(objA, objB, null, errorMessage);
     }
 
     /**
