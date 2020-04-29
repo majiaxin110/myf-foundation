@@ -113,6 +113,26 @@ public class AssertUtil {
     }
 
     /**
+     * Ensures that an object is instance of a class
+     * @param obj
+     * @param type
+     */
+    public static void checkClass(Object obj, Class<?> type, String errorCode, String errorMessage) {
+        if (!obj.getClass().equals(type)) {
+            throw new CommonSysException(errorCode, errorMessage);
+        }
+    }
+
+    /**
+     * Ensures that an object is instance of a class
+     * @param obj
+     * @param type
+     */
+    public static void checkClass(Object obj, Class<?> type, String errorCode) {
+        checkClass(obj, type,null, errorCode);
+    }
+
+    /**
      * Ensures that {@code expression} is {@code true}
      * @param expression
      * @param errorCode

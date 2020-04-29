@@ -2,9 +2,10 @@ package dev.mtage.web.test;
 
 import com.alibaba.fastjson.JSON;
 import dev.mtage.web.SimpleResult;
-import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 
 import java.util.List;
+
 
 /**
  * @author mtage
@@ -12,12 +13,12 @@ import java.util.List;
  */
 public class BaseTest {
     protected void checkResultAndOut(SimpleResult<?> result) {
-        Assert.assertTrue(result.getSuccess());
+        Assertions.assertTrue(result.getSuccess());
         System.out.println(JSON.toJSONString(result, true));
     }
 
     protected void checkListAndOut(List<?> result) {
-        Assert.assertTrue(result.size() > 0);
+        Assertions.assertTrue(result.size() > 0);
         System.out.println(JSON.toJSONString(result, true));
     }
 }
