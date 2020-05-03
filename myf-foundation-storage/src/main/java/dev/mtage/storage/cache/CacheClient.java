@@ -1,4 +1,4 @@
-package dev.mtage.cache;
+package dev.mtage.storage.cache;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.base.Joiner;

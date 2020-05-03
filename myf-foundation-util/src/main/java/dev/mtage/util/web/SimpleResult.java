@@ -1,4 +1,4 @@
-package dev.mtage.web;
+package dev.mtage.util.web;
 
 import lombok.Data;
 import org.apache.commons.lang3.StringUtils;

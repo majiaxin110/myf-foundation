@@ -1,4 +1,4 @@
-package dev.mtage.util;
+package dev.mtage.storage.cors;
 
 import com.qcloud.cos.COSClient;
 import com.qcloud.cos.ClientConfig;
