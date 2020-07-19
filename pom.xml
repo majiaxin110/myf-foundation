@@ -7,7 +7,7 @@
     <groupId>dev.mtage</groupId>
     <artifactId>myf-foundation</artifactId>
     <packaging>pom</packaging>
-    <version>0.0.7</version>
+    <version>0.0.8</version>
     <modules>
         <module>myf-foundation-storage</module>
         <module>myf-foundation-error</module>
