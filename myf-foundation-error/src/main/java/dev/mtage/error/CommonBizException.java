@@ -8,7 +8,6 @@ import lombok.Getter;
  **/
 
 public class CommonBizException extends Exception {
-    private static final long serialVersionUID = -1525668676119894006L;
     @Getter
     private String errorCode;
     private String message;

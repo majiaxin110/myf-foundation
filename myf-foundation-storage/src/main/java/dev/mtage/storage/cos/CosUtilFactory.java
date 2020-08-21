@@ -85,7 +85,7 @@ public class CosUtilFactory {
          * @return 文件键值
          * @throws CosClientException
          */
-        public String uploadFile(File file) {
+        public String uploadFileWithTime(File file) {
             // 获得存储桶
             String[] nameSplits = file.getName().split("\\.");
             String key = file.getName().substring(0, file.getName().lastIndexOf(".")) + "-" + new DateTime().toString("yyyy_MM_dd") +
