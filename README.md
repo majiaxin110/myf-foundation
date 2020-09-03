@@ -1,4 +1,6 @@
 # Myf Foundation
+[![Build Status](https://img.shields.io/teamcity/http/139.9.113.182:8111/s/MyfFoundation_Build.svg?label=TC%20build)](http://139.9.113.182:8111/viewType.html?buildTypeId=MyfFoundation_Build&guest=guest)
+
 个人自用的通用类库，包括缓存、日志、对象存储等
 
 工程进度
