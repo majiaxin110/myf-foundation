@@ -13,5 +13,10 @@ class SimpleResultTest {
     void test() {
         SimpleResult<String> result = SimpleResult.success("result");
         assertNotNull(result);
+        assertTrue(result.getSuccess());
+
+        result = SimpleResult.fail("code", "msg");
+        assertNotNull(result);
+        assertFalse(result.getSuccess());
     }
 }
