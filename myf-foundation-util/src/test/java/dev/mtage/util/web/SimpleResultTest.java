@@ -1,5 +1,6 @@
 package dev.mtage.util.web;
 
+import dev.mtage.util.AssertUtil;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,5 +19,10 @@ class SimpleResultTest {
         result = SimpleResult.fail("code", "msg");
         assertNotNull(result);
         assertFalse(result.getSuccess());
+    }
+
+    @Test
+    void testAssertUtil() {
+        AssertUtil.checkNotNull(SimpleResult.success("OK"), "result is null");
     }
 }
