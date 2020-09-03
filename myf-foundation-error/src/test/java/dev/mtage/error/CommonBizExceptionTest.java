@@ -19,4 +19,15 @@ class CommonExceptionTest {
 
         System.out.println("Done");
     }
+
+    @Test
+    void testSysException() {
+        String msg = "exception message";
+        String code = "CODE_001";
+        CommonSysException sysException = new CommonSysException(code, msg);
+        assertNotNull(sysException);
+        assertEquals(code, sysException.getErrorCode());
+
+        System.out.println("Done");
+    }
 }
