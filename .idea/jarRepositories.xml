@@ -31,5 +31,10 @@
       <option name="name" value="central" />
       <option name="url" value="https://repo1.maven.org/maven2" />
     </remote-repository>
+    <remote-repository>
+      <option name="id" value="github2" />
+      <option name="name" value="GitHub TobseF Apache Maven Packages" />
+      <option name="url" value="https://maven.pkg.github.com/TobseF/HelloMaven" />
+    </remote-repository>
   </component>
 </project>
