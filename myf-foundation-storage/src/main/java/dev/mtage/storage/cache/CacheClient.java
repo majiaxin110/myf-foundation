@@ -1,6 +1,5 @@
 package dev.mtage.storage.cache;
 
-import com.alibaba.fastjson.JSON;
 import com.google.common.base.Joiner;
 import com.google.common.base.Preconditions;
 import com.google.common.base.Throwables;
@@ -56,7 +55,7 @@ public class CacheClient {
         try {
             redissonClient.getBucket(buildActualKey(nameSpace, key)).set(value, timeToLive, TimeUnit.SECONDS);
         } catch (Exception ex) {
-            errorLogger.error("数据放入缓存异常 key {} value {} timeToLive {}", key, JSON.toJSON(value), timeToLive);
+            errorLogger.error("数据放入缓存异常 key {} value {} timeToLive {}", key, value, timeToLive);
         }
     }
 
@@ -67,7 +66,7 @@ public class CacheClient {
      */
     public void remove(String nameSpace, String key) {
 
-        AssertUtil.checkNotBlank(nameSpace,"缓存nameSpace empty");
+        AssertUtil.checkNotBlank(nameSpace, "缓存nameSpace empty");
         AssertUtil.checkNotBlank(key, "缓存key empty");
 
         try {
