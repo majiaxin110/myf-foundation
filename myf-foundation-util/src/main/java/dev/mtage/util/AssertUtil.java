@@ -1,8 +1,5 @@
 package dev.mtage.util;
 
-import com.google.common.base.Preconditions;
-import com.google.common.base.Verify;
-import com.google.common.base.VerifyException;
 import dev.mtage.error.CommonSysException;
 import org.apache.commons.lang3.StringUtils;
 
@@ -37,14 +34,8 @@ public class AssertUtil {
      * @throws CommonSysException if {@code obj} is null, with code and message
      */
     public static <T> void checkNotNull(T obj, String errorCode, String errorMessage, Consumer<CommonSysException> preAction) {
-        try {
-            Preconditions.checkNotNull(obj, errorMessage);
-        } catch (NullPointerException e) {
-            CommonSysException sysException = new CommonSysException(errorCode, errorMessage, e);
-            if (Objects.nonNull(preAction)) {
-                preAction.accept(sysException);
-            }
-            throw sysException;
+        if (obj == null) {
+            throwSysException(errorCode, errorMessage, preAction);
         }
     }
 
@@ -59,7 +50,7 @@ public class AssertUtil {
     }
 
     /**
-     * Ensures that an object reference passed as a parameter to the calling method is null based on Guava.
+     * Ensures that an object reference passed as a parameter to the calling method is null
      *
      * @param obj          an object reference
      * @param errorCode    the exception code to use if the check fails
@@ -68,19 +59,13 @@ public class AssertUtil {
      * @throws CommonSysException if {@code obj} is not null, with code and message
      */
     public static <T> void checkNull(T obj, String errorCode, String errorMessage, Consumer<CommonSysException> preAction) {
-        try {
-            Preconditions.checkArgument(Objects.isNull(obj), errorMessage);
-        } catch (IllegalArgumentException e) {
-            CommonSysException sysException = new CommonSysException(errorCode, errorMessage, e);
-            if (Objects.nonNull(preAction)) {
-                preAction.accept(sysException);
-            }
-            throw sysException;
+        if (obj != null) {
+            throwSysException(errorCode, errorMessage, preAction);
         }
     }
 
     /**
-     * Ensures that an object reference passed as a parameter to the calling method is null based on Guava.
+     * Ensures that an object reference passed as a parameter to the calling method is null.
      *
      * @param obj          an object reference
      * @param errorCode    the exception code to use if the check fails
@@ -92,7 +77,7 @@ public class AssertUtil {
     }
 
     /**
-     * Ensures that an object reference passed as a parameter to the calling method is null based on Guava.
+     * Ensures that an object reference passed as a parameter to the calling method is null.
      *
      * @param obj          an object reference
      * @param errorMessage the exception message to use if the check fails
@@ -108,16 +93,12 @@ public class AssertUtil {
      * @param str
      * @param errorCode
      * @param errorMessage
-     * @param preAction the action need to execute before throwing the exception
+     * @param preAction    the action need to execute before throwing the exception
      * @throws CommonSysException if {@code obj} is blank, with code and message
      */
     public static void checkNotBlank(String str, String errorCode, String errorMessage, Consumer<CommonSysException> preAction) {
         if (StringUtils.isBlank(str)) {
-            CommonSysException sysException = new CommonSysException(errorCode, errorMessage);
-            if (Objects.nonNull(preAction)) {
-                preAction.accept(sysException);
-            }
-            throw sysException;
+            throwSysException(errorCode, errorMessage, preAction);
         }
     }
 
@@ -144,6 +125,45 @@ public class AssertUtil {
         checkNotBlank(str, null, errorMessage);
     }
 
+
+    /**
+     * Ensures that a string is not empty based Apache Commons.
+     *
+     * @param str
+     * @param errorCode
+     * @param errorMessage
+     * @param preAction    the action need to execute before throwing the exception
+     * @throws CommonSysException if {@code obj} is blank, with code and message
+     */
+    public static void checkNotEmpty(String str, String errorCode, String errorMessage, Consumer<CommonSysException> preAction) {
+        if (StringUtils.isEmpty(str)) {
+            throwSysException(errorCode, errorMessage, preAction);
+        }
+    }
+
+    /**
+     * Ensures that a string is not empty based Apache Commons.
+     *
+     * @param str
+     * @param errorMessage
+     * @throws CommonSysException if {@code obj} is blank, with message
+     */
+    public static void checkNotEmpty(String str, String errorMessage) {
+        checkNotEmpty(str, null, errorMessage);
+    }
+
+    /**
+     * Ensures that a string is not empty based Apache Commons.
+     *
+     * @param str
+     * @param errorCode
+     * @param errorMessage
+     * @throws CommonSysException if {@code obj} is blank, with code and message
+     */
+    public static void checkNotEmpty(String str, String errorCode, String errorMessage) {
+        checkNotEmpty(str, errorCode, errorMessage, null);
+    }
+
     /**
      * Ensures that two object reference passed are equals
      *
@@ -151,16 +171,12 @@ public class AssertUtil {
      * @param objB
      * @param errorCode
      * @param errorMessage
-     * @param preAction the action need to execute before throwing the exception
+     * @param preAction    the action need to execute before throwing the exception
      */
     public static void checkEquals(Object objA, Object objB, String errorCode, String errorMessage,
                                    Consumer<CommonSysException> preAction) {
         if (!Objects.equals(objA, objB)) {
-            CommonSysException sysException = new CommonSysException(errorCode, errorMessage);
-            if (Objects.nonNull(preAction)) {
-                preAction.accept(sysException);
-            }
-            throw sysException;
+            throwSysException(errorCode, errorMessage, preAction);
         }
     }
 
@@ -196,11 +212,7 @@ public class AssertUtil {
     public static void checkClass(Object obj, Class<?> type, String errorCode, String errorMessage,
                                   Consumer<CommonSysException> preAction) {
         if (!obj.getClass().equals(type)) {
-            CommonSysException sysException = new CommonSysException(errorCode, errorMessage);
-            if (Objects.nonNull(preAction)) {
-                preAction.accept(sysException);
-            }
-            throw sysException;
+            throwSysException(errorCode, errorMessage, preAction);
         }
     }
 
@@ -230,18 +242,12 @@ public class AssertUtil {
      * @param expression
      * @param errorCode
      * @param errorMessage
-     * @param preAction the action need to execute before throwing the exception
+     * @param preAction    the action need to execute before throwing the exception
      * @throws CommonSysException if {@code expression} is not {@code true}, with code and message
      */
     public static void verify(boolean expression, String errorCode, String errorMessage, Consumer<CommonSysException> preAction) {
-        try {
-            Verify.verify(expression, errorMessage);
-        } catch (VerifyException e) {
-            CommonSysException sysException = new CommonSysException(errorCode, errorMessage, e);
-            if (Objects.nonNull(preAction)) {
-                preAction.accept(sysException);
-            }
-            throw sysException;
+        if (!expression) {
+            throwSysException(errorCode, errorMessage, preAction);
         }
     }
 
@@ -266,6 +272,14 @@ public class AssertUtil {
      */
     public static void verify(boolean expression, String errorMessage) {
         verify(expression, null, errorMessage);
+    }
+
+    private static void throwSysException(String errorCode, String errorMessage, Consumer<CommonSysException> preAction) {
+        CommonSysException sysException = new CommonSysException(errorCode, errorMessage);
+        if (Objects.nonNull(preAction)) {
+            preAction.accept(sysException);
+        }
+        throw sysException;
     }
 
 }
